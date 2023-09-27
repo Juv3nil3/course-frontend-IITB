@@ -1,13 +1,11 @@
 import React, {useState} from 'react'
 import CourseService from '../services/CourseService'
-import { useNavigate } from 'react-router-dom'
 
 
 const CreateCourse = () => {
     const [title, setTitle] = useState('')
     const [courseCode, setCourseCode] = useState('')
     const [courseDescription, setCourseDescription] = useState('')
-    const navigate = useNavigate();
 
     const saveCourse = (e) => {
         e.preventDefault();
@@ -16,8 +14,6 @@ const CreateCourse = () => {
 
         CourseService.createCourse(course).then((response) =>{
             console.log(response.data)
-
-            navigate("/list-courses");
 
         }).catch(error =>{
             console.log(error)

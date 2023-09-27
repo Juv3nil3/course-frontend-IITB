@@ -54,8 +54,8 @@ const ListCourseInstances = () => {
                   onChange={(e) => setSemester(e.target.value)}
                 >
                   <option value="">Semester</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
                 </select>
 
             </div>
