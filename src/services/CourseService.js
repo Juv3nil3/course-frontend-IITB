@@ -15,6 +15,7 @@ class CourseService{
     getCourseById(courseId){
         return axios.get(COURSE_BASE_REST_API_URL +'/'+courseId)
     }
+    
     deleteCourse(courseId){
         return axios.delete(COURSE_BASE_REST_API_URL+'/'+ courseId)
     }

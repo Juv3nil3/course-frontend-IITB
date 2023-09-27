@@ -14,7 +14,6 @@ const ListCourses = () => {
   const getAllCourses = () => {
     CourseService.getAllCourses().then((response) => {
       setCourses(response.data)
-      console.log(response.data);
     }).catch(error => {
       console.log(error);
     })
