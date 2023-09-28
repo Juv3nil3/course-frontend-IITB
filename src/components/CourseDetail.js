@@ -23,7 +23,7 @@ const CourseDetail = () => {
     
   return (
     <div>
-        <div className="container text-center">
+        <div className="container text-center col-md-7 mt-2">
             <h2>Course Details</h2>
                 <div className="card">
                     <div className="card-body">

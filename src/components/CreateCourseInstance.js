@@ -99,7 +99,8 @@ const CreateCourseInstance = () => {
                             <button
                                 className="btn btn-primary btn-sm"
                                 onClick={refreshComponent}
-                            > Refresh
+                            > 
+                                Refresh
                             </button>
                         </div>
                     </div>
@@ -109,6 +110,7 @@ const CreateCourseInstance = () => {
                                     type="text"
                                     placeholder="Year"
                                     name="year"
+                                    autoComplete="off"
                                     className="form-control form-control-sm"
                                     value={year}
                                     onChange={(e) => setYear(e.target.value)}
@@ -119,6 +121,7 @@ const CreateCourseInstance = () => {
                                 type="text"
                                 placeholder="Semester"
                                 name="semester"
+                                autoComplete="off"
                                 className="form-control form-control-sm"
                                 value={semester}
                                 onChange={(e) => setSemester(e.target.value)}

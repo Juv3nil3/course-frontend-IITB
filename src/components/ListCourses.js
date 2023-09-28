@@ -30,8 +30,8 @@ const ListCourses = () => {
 
   return (
     <div>
-        <div className="container col-md-8  mt-5">
-          <table className="table table-bordered table-striped table-sm slim-table">
+        <div className="container col-md-8 mt-5">
+          <table className="table table-bordered table-sm table-hover">
             <thead className="custom-table-header">
                 <th>Course Title</th>
                 <th>Course Code</th>
@@ -44,9 +44,13 @@ const ListCourses = () => {
                       <tr key = {course.id}>
                         <td>{course.title}</td>
                         <td>{course.courseCode}</td>
-                        <td>
-                          <Link className="btn btn-info" to={`/course-details/${course.id}`}>Details</Link>
-                          <button className="btn btn-danger ms-2" onClick={() => deleteCourse(course.id)}>Delete</button>
+                        <td className="p-0">
+                          <Link className="btn px-1 py-0" to={`/course-details/${course.id}`}>
+                            <i className="fa fa-search"></i>
+                          </Link>
+                          <button className="btn ms-3 px-1 py-0" onClick={() => deleteCourse(course.id)}>
+                            <i className="fa fa-trash"></i>
+                          </button>
                         </td>
                       </tr>
                   )

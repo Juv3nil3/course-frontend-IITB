@@ -33,15 +33,16 @@ const ListCourseInstances = () => {
 
 
   return (
-    <div className="container mt-4 col-md-9">
+    <div className="container mt-4 col-md-8">
       <div className="row ms-4">
-        <div className="col-md-5 ">
+        <div className="col-md-6 ">
           <form className="d-flex">
               <div className="form-group mt-2 col-md-3 me-4">
                 <input
                   type="text"
                   placeholder="Year"
                   name="year"
+                  autoComplete="off"
                   className="form-control form-control-sm"
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
@@ -71,8 +72,8 @@ const ListCourseInstances = () => {
           </form>
         </div>
       </div>
-      <div className="container col-md-">
-        <table className="table table-striped table-sm slim-table mt-4">
+      <div className="container mt-4">
+        <table className="table table-bordered table-hover table-sm">
           <thead className="custom-table-header">
             <tr>
               <th>Course Title</th>
@@ -87,18 +88,18 @@ const ListCourseInstances = () => {
                 <td>{courseInstance.title}</td>
                 <td>{`${courseInstance.year}-${courseInstance.semester}`}</td>
                 <td>{courseInstance.courseCode}</td>
-                <td>
+                <td className="p-0">
                   <Link
                     to={`/instance-details/${courseInstance.year}/${courseInstance.semester}/${courseInstance.courseId}`}
-                    className="btn btn-info"
+                    className="btn px-1 py-0"
                   >
-                    Details
+                    <i className="fa fa-search "></i>
                   </Link>
                   <button
-                    className="btn btn-danger ms-2"
+                    className="btn ms-3 px-1 py-0"
                     onClick={() => deleteInstance(courseInstance.year, courseInstance.semester, courseInstance.courseId)} // Define your deleteCourse function
                   >
-                    Delete
+                    <i className="fa fa-trash"></i>
                   </button>
                 </td>
               </tr>

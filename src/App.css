@@ -41,7 +41,16 @@
   font-weight: 300;
   background-color: #5a80fb !important;
   color: white !important;
+  border: none;
 }
 
+.table {
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+}
 
-
+.custom-form {
+  font-size: 12px !important;
+  font-weight: 300;
+}
