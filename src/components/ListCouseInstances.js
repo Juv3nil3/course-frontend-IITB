@@ -3,15 +3,17 @@ import { Link } from 'react-router-dom'; // Import Link for navigation (if neede
 import CourseInstanceService from '../services/CourseInstanceService'; // Import your CourseInstanceService
 
 const ListCourseInstances = () => {
+  // Define state variables for year, semester, and courseInstances
   const [year, setYear] = useState('');
   const [semester, setSemester] = useState('');
   const [courseInstances, setCourseInstances] = useState([]);
 
-  useEffect(() => {
-    // Fetch and display instances when the component mounts (initial load)
-    getAllInstances();
-  }, []);
+    useEffect(() => {
+      // Fetch and display instances when the component mounts (initial load)
+      getAllInstances();
+    }, []);
 
+    // Function to fetch all instances
     const getAllInstances = () => {
         CourseInstanceService.getAllInstances(year, semester)
         .then((response) => {
@@ -22,6 +24,7 @@ const ListCourseInstances = () => {
         })
     }
 
+    // Function to delete a course instance
     const deleteInstance = (year, semester, courseId) => {
         CourseInstanceService.deleteInstance(year, semester, courseId).then((response) => {
           getAllInstances();

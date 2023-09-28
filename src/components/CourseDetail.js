@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import CourseService from '../services/CourseService'
 
 const CourseDetail = () => {
+
+    // Retrieve 'id' from the route parameters using 'useParams'
     const { id } = useParams();
     const navigate = useNavigate();
     const [course, setCourse] = useState([]);
@@ -10,13 +12,13 @@ const CourseDetail = () => {
 
     useEffect(() => {
       CourseService.getCourseById(id).then((response) => {
-        console.log(response);
-        setCourse(response.data)
+        setCourse(response.data)  // Set the retrieved course data in the state
       }).catch(error =>{
         console.log(error);
       })
     },[])
 
+    // Function to handle the "Back" button click event
     const handleBack = () => {
         navigate('/list-courses');
     }

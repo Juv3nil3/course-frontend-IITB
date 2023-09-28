@@ -4,18 +4,21 @@ import CourseInstanceService from '../services/CourseInstanceService';
 
 const InstanceDetail = () => {
 
+    // Retrieve 'year', 'semester', and 'courseId' from the route parameters using 'useParams'
     const{year, semester, courseId} = useParams();
     const navigate = useNavigate();
     const[instance, setInstance] = useState([]);
 
+    // Use 'useEffect' to fetch instance details when the component mounts
     useEffect(() => {
         CourseInstanceService.getInstanceById(year, semester, courseId).then((response) => {
-          setInstance(response.data)
+          setInstance(response.data)  // Set the retrieved instance data in the state
         }).catch(error =>{
           console.log(error);
         })
       },[])
   
+      // Function to handle the "Back" button click event
       const handleBack = () => {
           navigate('/list-instances');
       }

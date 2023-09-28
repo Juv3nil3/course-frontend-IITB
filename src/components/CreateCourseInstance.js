@@ -4,7 +4,10 @@ import CourseInstanceService from '../services/CourseInstanceService';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
 
+
+// Create a functional component called CreateCourseInstance
 const CreateCourseInstance = () => {
+    // Define and initialize state variables
     const [courseInfo, setCourseInfo] = useState({
         courseId:'',
         courseCode:'',
@@ -14,6 +17,7 @@ const CreateCourseInstance = () => {
     const [courseCodes, setCourseCodes] = useState([]); // To store the fetched course codes
     const [refreshKey, setRefreshKey] = useState(0); // Key to force component 
     const navigate = useNavigate();
+
 
     useEffect(() => {
         // Fetch all courses from your API using CourseService.getAllCourses
@@ -38,6 +42,8 @@ const CreateCourseInstance = () => {
           });
       }, [refreshKey]);
 
+    
+    // Define a function to save a course instance
     const saveCourseInstance = (e) => {
         e.preventDefault();
     
@@ -47,7 +53,7 @@ const CreateCourseInstance = () => {
           semester,
         };
         
-
+        // Call the createCourseInstance method from CourseInstanceService to save the course instance
         CourseInstanceService.createCourseInstance(courseInstance)
             .then((response) => {
                 //Showing success message
@@ -70,6 +76,7 @@ const CreateCourseInstance = () => {
           })
     }
 
+    // Define a function to handle the change of the selected course code
     const handleCourseCodeChange = (e) => {
         const selectedCourseCode = e.target.value;
         // Find the corresponding courseId based on the selected courseCode
@@ -80,7 +87,7 @@ const CreateCourseInstance = () => {
         }));
     }
 
-
+     // Define a function to refresh the component
     const refreshComponent = () => {
         // Increment the key to force a component refresh
         setRefreshKey((prevKey) => prevKey + 1);

@@ -8,11 +8,13 @@ import CreateCourseInstance from './components/CreateCourseInstance';
 import ListCourseInstances from './components/ListCouseInstances';
 import Navbar from './components/Navbar';
 import InstanceDetail from './components/InstanceDetail';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
   return (
     <div>
+      <ToastContainer />
       <Router>
         <Navbar />
           <div className="container">

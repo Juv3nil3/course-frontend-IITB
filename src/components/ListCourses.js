@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom'
 
 const ListCourses = () => {
 
+  // Define state variable 'courses' to store the list of courses
   const [courses, setCourses] = useState([])
 
   useEffect(() => {
     getAllCourses();
   }, [])
 
+  // Function to fetch all courses
   const getAllCourses = () => {
     CourseService.getAllCourses().then((response) => {
       setCourses(response.data)
@@ -19,7 +21,8 @@ const ListCourses = () => {
       console.log(error);
     })
   }
-    
+   
+  // Function to delete a course by courseId
   const deleteCourse = (courseId) => {
     CourseService.deleteCourse(courseId).then((response) => {
       getAllCourses();

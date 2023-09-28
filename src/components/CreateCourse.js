@@ -2,24 +2,25 @@ import React, {useState} from 'react'
 import CourseService from '../services/CourseService'
 import { ToastContainer, toast } from 'react-toastify'
 
-
+// Create a functional component called CreateCourse
 const CreateCourse = () => {
+    // Define and initialize state variables for title, courseCode, and courseDescription
     const [title, setTitle] = useState('')
     const [courseCode, setCourseCode] = useState('')
     const [courseDescription, setCourseDescription] = useState('')
 
+    // Define a function to save a course
     const saveCourse = (e) => {
         e.preventDefault();
 
+        // Create a course object using state variables
         const course = {title, courseCode, courseDescription}
 
         CourseService.createCourse(course).then((response) =>{
             //Showing success message
             toast.success('Course Saved Successfully', {
                 position: toast.POSITION.TOP_RIGHT,
-              });
-
-            console.log(response.data)
+              })
         }).catch((error) => {
             if (error.response) {
               // Extract the error message from the response
@@ -40,6 +41,7 @@ const CreateCourse = () => {
   return (
     <div>
         <ToastContainer />
+        {/* Create a form for adding a new course */}
         <div className="container mt-5 ">
             <div className="row justify-content-center">
                 <div className="col-md-3 text-center">
