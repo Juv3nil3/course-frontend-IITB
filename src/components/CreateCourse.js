@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import CourseService from '../services/CourseService'
+import { ToastContainer, toast } from 'react-toastify'
 
 
 const CreateCourse = () => {
@@ -13,16 +14,32 @@ const CreateCourse = () => {
         const course = {title, courseCode, courseDescription}
 
         CourseService.createCourse(course).then((response) =>{
-            console.log(response.data)
+            //Showing success message
+            toast.success('Course Saved Successfully', {
+                position: toast.POSITION.TOP_RIGHT,
+              });
 
-        }).catch(error =>{
-            console.log(error)
-        })
+            console.log(response.data)
+        }).catch((error) => {
+            if (error.response) {
+              // Extract the error message from the response
+              const errorMessage = error.response.data;
+      
+              // Show an error toast message with the extracted error message
+              toast.error(errorMessage, {
+                position: toast.POSITION.TOP_RIGHT,
+              });
+            } else {
+              // Handle other types of errors
+              console.error(error);
+            }
+          })
     }
 
 
   return (
     <div>
+        <ToastContainer />
         <div className="container mt-5 ">
             <div className="row justify-content-center">
                 <div className="col-md-3 text-center">

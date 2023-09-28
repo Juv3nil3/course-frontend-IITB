@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import CourseService from '../services/CourseService';
 import CourseInstanceService from '../services/CourseInstanceService';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'
 
 const CreateCourseInstance = () => {
     const [courseInfo, setCourseInfo] = useState({
@@ -49,12 +50,24 @@ const CreateCourseInstance = () => {
 
         CourseInstanceService.createCourseInstance(courseInstance)
             .then((response) => {
-            //console.log(response.data);
-            // Navigate or perform any other action after successful 
-            navigate('/list-instances');
+                //Showing success message
+                toast.success('Instance Saved Successfully', {
+                    position: toast.POSITION.TOP_RIGHT,
+                })
         }).catch((error) => {
-            console.log(error);
-        })
+            if (error.response) {
+              // Extract the error message from the response
+              const errorMessage = error.response.data;
+      
+              // Show an error toast message with the extracted error message
+              toast.error(errorMessage, {
+                position: toast.POSITION.TOP_RIGHT,
+              });
+            } else {
+              // Handle other types of errors
+              console.error(error);
+            }
+          })
     }
 
     const handleCourseCodeChange = (e) => {
@@ -76,6 +89,7 @@ const CreateCourseInstance = () => {
 
   return (
     <div className="container mt-5">
+        <ToastContainer />
         <div className="row justify-content-center">
             <div className="col-md-4 align-items-center">
                 <form>
