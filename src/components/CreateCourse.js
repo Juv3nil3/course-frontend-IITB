@@ -23,17 +23,16 @@ const CreateCourse = () => {
 
   return (
     <div>
-        <div className="container">
-            <br /> <br />
-            <div className="row">
-                <div className="col-md-4 offset-md-3 offset-md-3 text-center">
+        <div className="container mt-5 ">
+            <div className="row justify-content-center">
+                <div className="col-md-3 text-center">
                     <form>
                         <div className="form-group mb-2">
                             <input
                                 type = "text"
                                 placeholder="Course title"
                                 name="title"
-                                className="form-control"
+                                className="form-control form-control-sm"
                                 value = {title}
                                 onChange={(e) => setTitle(e.target.value)}
                             >
@@ -44,7 +43,7 @@ const CreateCourse = () => {
                                 type = "text"
                                 placeholder="Course code"
                                 name="couseCode"
-                                className="form-control"
+                                className="form-control form-control-sm"
                                 value = {courseCode}
                                 onChange={(e) => setCourseCode(e.target.value)}
                             >
@@ -55,14 +54,14 @@ const CreateCourse = () => {
                                 type = "textarea"
                                 placeholder="Course description"
                                 name="courseDescription"
-                                className="form-control"
+                                className="form-control form-control-sm"
                                 value = {courseDescription}
                                 onChange={(e) => setCourseDescription(e.target.value)}
                             >
                             </input>
                         </div>
 
-                        <button className="btn bg-primary" onClick = {(e) => saveCourse(e)}>Add Course</button>
+                        <button className="btn bg-primary btn-sm text-white" onClick = {(e) => saveCourse(e)}>Add Course</button>
                     </form>
                 </div>
             </div>

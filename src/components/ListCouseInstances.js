@@ -33,23 +33,24 @@ const ListCourseInstances = () => {
 
 
   return (
-    <div className="container mt-4">
-      <div className="row">
-        <div className="col-md-4 offset-md-2 text-center">
-          <form>
-            <div className="row mb-2">
-              <div className="col-md-5">
+    <div className="container mt-4 col-md-9">
+      <div className="row ms-4">
+        <div className="col-md-5 ">
+          <form className="d-flex">
+              <div className="form-group mt-2 col-md-3 me-4">
                 <input
                   type="text"
                   placeholder="Year"
                   name="year"
-                  className="form-control"
+                  className="form-control form-control-sm"
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
                 />
+              </div>
+              <div className="form-group mt-2 col-md-4 me-4">
                 <select
                   name="semester"
-                  className="form-select mt-2"
+                  className="form-select form-select-sm border-0"
                   value={semester}
                   onChange={(e) => setSemester(e.target.value)}
                 >
@@ -57,55 +58,54 @@ const ListCourseInstances = () => {
                   <option value="1">1</option>
                   <option value="2">2</option>
                 </select>
-
-            </div>
-              <div className="col-md-2">
+              </div>
+              <div className="col-md-4 mt-2">
                 <button
                   type="button"
-                  className="btn btn-primary btn-sm mt-2"
+                  className="btn btn-primary btn-sm"
                   onClick={() => getAllInstances()}
                 >
                   List Instances
                 </button>
-              </div>
-            </div>
+              </div>  
           </form>
         </div>
       </div>
-
-      <table className="table table-bordered table-striped mt-4">
-        <thead>
-          <tr>
-            <th>Course Title</th>
-            <th>Year-Sem</th>
-            <th>Course Code</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {courseInstances.map((courseInstance) => (
-            <tr key={courseInstance.id}>
-              <td>{courseInstance.title}</td>
-              <td>{`${courseInstance.year}-${courseInstance.semester}`}</td>
-              <td>{courseInstance.courseCode}</td>
-              <td>
-                <Link
-                  to={`/instance-details/${courseInstance.year}/${courseInstance.semester}/${courseInstance.courseId}`}
-                  className="btn btn-info"
-                >
-                  Details
-                </Link>
-                <button
-                  className="btn btn-danger ms-2"
-                  onClick={() => deleteInstance(courseInstance.year, courseInstance.semester, courseInstance.courseId)} // Define your deleteCourse function
-                >
-                  Delete
-                </button>
-              </td>
+      <div className="container col-md-">
+        <table className="table table-striped table-sm slim-table mt-4">
+          <thead className="custom-table-header">
+            <tr>
+              <th>Course Title</th>
+              <th>Year-Sem</th>
+              <th>Course Code</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {courseInstances.map((courseInstance) => (
+              <tr key={courseInstance.id}>
+                <td>{courseInstance.title}</td>
+                <td>{`${courseInstance.year}-${courseInstance.semester}`}</td>
+                <td>{courseInstance.courseCode}</td>
+                <td>
+                  <Link
+                    to={`/instance-details/${courseInstance.year}/${courseInstance.semester}/${courseInstance.courseId}`}
+                    className="btn btn-info"
+                  >
+                    Details
+                  </Link>
+                  <button
+                    className="btn btn-danger ms-2"
+                    onClick={() => deleteInstance(courseInstance.year, courseInstance.semester, courseInstance.courseId)} // Define your deleteCourse function
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> 
     </div>
   );
 };

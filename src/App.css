@@ -37,4 +37,11 @@
   }
 }
 
+.custom-table-header th {
+  font-weight: 300;
+  background-color: #5a80fb !important;
+  color: white !important;
+}
+
+
 

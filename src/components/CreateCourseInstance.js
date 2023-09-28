@@ -75,16 +75,15 @@ const CreateCourseInstance = () => {
 
 
   return (
-    <div className="container">
-        <br /> <br />
-        <div className="row ">
-            <div className="col-md-4 offset-md-4 text-center">
+    <div className="container mt-5">
+        <div className="row justify-content-center">
+            <div className="col-md-4 align-items-center">
                 <form>
-                    <div className="row mb-2">
+                    <div className="row mb-3">
                         <div className="col-md-5">
                             <select
                                 name="courseCode"
-                                className="form-select"
+                                className="form-select form-select-sm border-0"
                                 value={courseInfo.courseCode}
                                 onChange={handleCourseCodeChange}
                             >
@@ -110,7 +109,7 @@ const CreateCourseInstance = () => {
                                     type="text"
                                     placeholder="Year"
                                     name="year"
-                                    className="form-control"
+                                    className="form-control form-control-sm"
                                     value={year}
                                     onChange={(e) => setYear(e.target.value)}
                                 />
@@ -120,7 +119,7 @@ const CreateCourseInstance = () => {
                                 type="text"
                                 placeholder="Semester"
                                 name="semester"
-                                className="form-control"
+                                className="form-control form-control-sm"
                                 value={semester}
                                 onChange={(e) => setSemester(e.target.value)}
                             />
@@ -129,7 +128,7 @@ const CreateCourseInstance = () => {
                     <div className="row">
                         <div className="col-md-8 text-center">
                             <button
-                                className="btn bg-primary"
+                                className="btn bg-primary btn-sm text-white"
                                 onClick={(e) => saveCourseInstance(e)}
                             >
                                 Add instance

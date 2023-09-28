@@ -9,6 +9,7 @@ import ListCourseInstances from './components/ListCouseInstances';
 import Navbar from './components/Navbar';
 import InstanceDetail from './components/InstanceDetail';
 
+
 function App() {
   return (
     <div>
