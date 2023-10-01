@@ -7,8 +7,6 @@ const CourseDetail = () => {
     // Retrieve 'id' from the state using 'useLocation'
     const location = useLocation();
     const id = location.state.id;
-    
-    console.log("Course ID from params:", id);
     const navigate = useNavigate();
     const [course, setCourse] = useState([]);
     
