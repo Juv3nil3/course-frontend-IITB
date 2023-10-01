@@ -21,10 +21,10 @@ function App() {
             <Routes>
               <Route exact path="/" element={<CreateCourse />} />
               <Route exact path="/list-courses" element={<ListCourses />} />
-              <Route exact path="/course-details/:id" element={<CourseDetail />} />
+              <Route exact path="/course-details" element={<CourseDetail />} />
               <Route exact path="/create-instance" element={<CreateCourseInstance />} />
               <Route exact path="/list-instances" element={<ListCourseInstances />} />
-              <Route path="/instance-details/:year/:semester/:courseId" element={<InstanceDetail />} />
+              <Route path="/instance-details" element={<InstanceDetail />} />
             </Routes>
           </div>
         <Footer />

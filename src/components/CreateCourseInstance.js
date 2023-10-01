@@ -16,13 +16,14 @@ const CreateCourseInstance = () => {
     const [semester, setSemester] = useState('');
     const [courseCodes, setCourseCodes] = useState([]); // To store the fetched course codes
     const [refreshKey, setRefreshKey] = useState(0); // Key to force component 
-    const navigate = useNavigate();
 
 
     useEffect(() => {
         // Fetch all courses from your API using CourseService.getAllCourses
         CourseService.getAllCourses()
           .then((response) => {
+            console.log("Courses fetched successfully:", response.data);
+
             // Extract course codes and course IDs from the response and store them in state
             const courses = response.data;
             const codes = courses.map((course) => course.courseCode);
@@ -30,6 +31,9 @@ const CreateCourseInstance = () => {
               acc[course.courseCode] = course.id; // Assuming you have an 'id' property in your course data
               return acc;
             }, {});
+
+            console.log("Course Codes:", codes);
+            console.log("Course Info Mapping:", courseInfoMapping);
             
             setCourseCodes(codes);
             setCourseInfo((prevCourseInfo) => ({
@@ -46,6 +50,10 @@ const CreateCourseInstance = () => {
     // Define a function to save a course instance
     const saveCourseInstance = (e) => {
         e.preventDefault();
+
+        console.log("Course ID to be sent:", courseInfo.courseId);
+        console.log("Year:", year);
+        console.log("Semester:", semester);
     
         const courseInstance = {
           courseId: courseInfo.courseId,
@@ -53,6 +61,8 @@ const CreateCourseInstance = () => {
           semester,
         };
         
+        console.log("Course Instance to be sent:", courseInstance); // Log the entire payload
+
         // Call the createCourseInstance method from CourseInstanceService to save the course instance
         CourseInstanceService.createCourseInstance(courseInstance)
             .then((response) => {
@@ -79,11 +89,16 @@ const CreateCourseInstance = () => {
     // Define a function to handle the change of the selected course code
     const handleCourseCodeChange = (e) => {
         const selectedCourseCode = e.target.value;
+        const courseId = courseInfo.courseInfoMapping[selectedCourseCode];
+
+        console.log("Selected Course Code:", selectedCourseCode);
+        console.log("Course ID:", courseId);
+
         // Find the corresponding courseId based on the selected courseCode
         setCourseInfo((prevCourseInfo) => ({
             ...prevCourseInfo,
             courseCode: selectedCourseCode,
-            courseId: prevCourseInfo.courseInfoMapping[selectedCourseCode],
+            courseId: courseId,
         }));
     }
 

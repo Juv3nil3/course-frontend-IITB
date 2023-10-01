@@ -93,8 +93,9 @@ const ListCourseInstances = () => {
                 <td>{courseInstance.courseCode}</td>
                 <td className="p-0">
                   <Link
-                    to={`/instance-details/${courseInstance.year}/${courseInstance.semester}/${courseInstance.courseId}`}
                     className="btn px-1 py-0"
+                    to="/instance-details"
+                    state={{year: courseInstance.year, semester: courseInstance.semester, courseId: courseInstance.courseId}}
                   >
                     <i className="fa fa-search "></i>
                   </Link>

@@ -48,7 +48,7 @@ const ListCourses = () => {
                         <td>{course.title}</td>
                         <td>{course.courseCode}</td>
                         <td className="p-0">
-                          <Link className="btn px-1 py-0" to={`/course-details/${course.id}`}>
+                          <Link className="btn px-1 py-0" to="/course-details" state={{id: course.id}}>
                             <i className="fa fa-search"></i>
                           </Link>
                           <button className="btn ms-3 px-1 py-0" onClick={() => deleteCourse(course.id)}>

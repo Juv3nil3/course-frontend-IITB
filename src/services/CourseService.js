@@ -1,23 +1,25 @@
 import axios from "axios";
 
-const COURSE_BASE_REST_API_URL = 'http://localhost:8080/api/courses';
+//const REACT_APP_API_URL = process.env.REACT_APP_API_URL;
+const COURSE_BASE_REST_API_URL = 'api/courses';
 
-class CourseService{
-    
-    getAllCourses(){
-        return axios.get(COURSE_BASE_REST_API_URL)
+console.log("API URL:", process.env.REACT_APP_API_URL);
+
+class CourseService {
+    async getAllCourses() {    
+        return await axios.get(`${COURSE_BASE_REST_API_URL}`);
     }
 
-    createCourse(course){
-        return axios.post(COURSE_BASE_REST_API_URL,course)
+    async createCourse(course) {
+        return await axios.post(`${COURSE_BASE_REST_API_URL}`, course);
     }
 
-    getCourseById(courseId){
-        return axios.get(COURSE_BASE_REST_API_URL +'/'+courseId)
+    async getCourseById(courseId) {
+        return await axios.get(`${COURSE_BASE_REST_API_URL}/${courseId}`);
     }
-    
-    deleteCourse(courseId){
-        return axios.delete(COURSE_BASE_REST_API_URL+'/'+ courseId)
+
+    async deleteCourse(courseId) {
+        return await axios.delete(`${COURSE_BASE_REST_API_URL}/${courseId}`);
     }
 }
 

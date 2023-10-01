@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import CourseInstanceService from '../services/CourseInstanceService';
 
 const InstanceDetail = () => {
 
-    // Retrieve 'year', 'semester', and 'courseId' from the route parameters using 'useParams'
-    const{year, semester, courseId} = useParams();
+    // Retrieve 'year', 'semester', and 'courseId'  using 'useLocation'
+    const location = useLocation();
+    const{year, semester, courseId} = location.state;
     const navigate = useNavigate();
     const[instance, setInstance] = useState([]);
 
@@ -16,7 +17,7 @@ const InstanceDetail = () => {
         }).catch(error =>{
           console.log(error);
         })
-      },[])
+      },[year, semester, courseId])
   
       // Function to handle the "Back" button click event
       const handleBack = () => {

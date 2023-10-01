@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import CourseService from '../services/CourseService'
 
 const CourseDetail = () => {
 
-    // Retrieve 'id' from the route parameters using 'useParams'
-    const { id } = useParams();
+    // Retrieve 'id' from the state using 'useLocation'
+    const location = useLocation();
+    const id = location.state.id;
+    
+    console.log("Course ID from params:", id);
     const navigate = useNavigate();
     const [course, setCourse] = useState([]);
     
@@ -16,7 +19,7 @@ const CourseDetail = () => {
       }).catch(error =>{
         console.log(error);
       })
-    },[])
+    },[id])
 
     // Function to handle the "Back" button click event
     const handleBack = () => {
